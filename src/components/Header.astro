@@ -1,0 +1,127 @@
+---
+import NavLink from './NavLink.astro'
+import Search from './blocks/Search.astro'
+import siteConfig from '../data/global/index.json'
+
+const navLinks = siteConfig.navLinks || []
+---
+
+<header class="w-full border-b-2 border-b-black/5 transition-all duration-300">
+  <div class="container p-4 md:px-0 md:py-6">
+    <div class="flex w-full flex-row items-center justify-between">
+      <a class="text-theme-foreground mr-auto text-2xl leading-tight font-bold sm:text-4xl md:mr-0" href="/">
+        {siteConfig.title}
+      </a>
+
+      <nav class="hidden md:block">
+        {
+          navLinks.length > 0 && (
+            <ul class="flex flex-col gap-6 md:flex-row">
+              {navLinks.map((link) => (
+                <li class="px-2 py-1">
+                  <NavLink class="font-medium text-gray-500 hover:underline hover:decoration-1 hover:underline-offset-2 md:text-base" href={link.href}>
+                    {link.text}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </nav>
+      <button id="hamburger-button" class="relative mr-2 flex h-[18px] w-6 cursor-pointer flex-col justify-between md:hidden">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+    </div>
+  </div>
+  <nav class="hidden text-gray-900" id="mobile">
+    {
+      navLinks.length > 0 && (
+        <ul class="flex flex-col md:flex-row">
+          {navLinks.map((link) => (
+            <li class="border-b border-gray-300 px-6 py-4">
+              <NavLink class="font-medium text-gray-500 hover:underline hover:decoration-1 hover:underline-offset-2 md:text-base" href={link.href}>
+                {link.text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </nav>
+  <Search />
+</header>
+
+<style>
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #hamburger-button.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    height: 1.5px;
+  }
+
+  #hamburger-button.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger-button.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    height: 1.5px;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    class HeaderController {
+      private header: HTMLElement | null
+      private readonly threshold = 200
+      private readonly classes = {
+        initial: ['bg-gray-200'],
+        scrolled: ['fixed', 'top-0', 'left-0', 'bg-gray-200', 'z-50', 'dark:bg-gray-900', 'animate-slideDown']
+      }
+
+      constructor() {
+        this.header = document.querySelector('header')
+        this.init()
+      }
+
+      private init() {
+        this.handleScroll = this.handleScroll.bind(this)
+        window.addEventListener('scroll', this.handleScroll, { passive: true })
+      }
+
+      private handleScroll() {
+        const isScrolled = window.scrollY > this.threshold
+        this.header?.classList.remove(...(isScrolled ? this.classes.initial : this.classes.scrolled))
+        this.header?.classList.add(...(isScrolled ? this.classes.scrolled : this.classes.initial))
+      }
+
+      public cleanup() {
+        window.removeEventListener('scroll', this.handleScroll)
+      }
+    }
+
+    let controller = new HeaderController()
+
+    function initializeHamburgerMenu() {
+      const hamburgerButton = document.getElementById('hamburger-button')
+      const mobile = document.getElementById('mobile')
+
+      if (hamburgerButton && mobile) {
+        hamburgerButton.addEventListener('click', () => {
+          hamburgerButton.classList.toggle('open')
+          mobile.classList.toggle('hidden')
+          mobile.classList.toggle('block')
+        })
+      }
+    }
+
+    initializeHamburgerMenu()
+  })
+</script>

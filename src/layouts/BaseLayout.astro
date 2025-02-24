@@ -1,0 +1,31 @@
+---
+import { ClientRouter } from 'astro:transitions'
+import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Loading from '../components/Loading.astro'
+import Scripts from '../components/localScripts.astro'
+
+export type Props = HeadProps
+const { ...head } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="break-words antialiased">
+  <head>
+    <BaseHead {...head} />
+    <script>
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+    <ClientRouter />
+  </head>
+  <body class="bg-backdround font-sans">
+    <Loading />
+    <Header />
+    <slot />
+    <Footer />
+    <Scripts />
+  </body>
+</html>
