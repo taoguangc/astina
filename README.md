@@ -1,6 +1,6 @@
 # Astina - Astro & Tailwind CSS Theme
 
-Astina is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
+Astina is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [emptyarea.com](https://emptyarea.com/).
 
 ![Astina Astro.js Theme](public/dante-preview.jpg)
 
