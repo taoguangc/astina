@@ -20,5 +20,6 @@ export default defineConfig({
   build: {
     format: 'file'
   },
-  output: 'static'
+  output: 'static',
+  trailingSlash: 'never'
 })
