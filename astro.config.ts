@@ -18,9 +18,6 @@ export default defineConfig({
     responsiveImages: true
   },
   build: {
-    format: 'file',
-    // 添加资源处理配置
-    assets: 'assets',
-    assetsPrefix: '/_astro'
+    format: 'file'
   }
 })
