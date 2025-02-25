@@ -34,9 +34,9 @@ const [processedImage, ...processedServiceImages] = await processImages([image, 
             customers.map((customer, index) => (
               <div class="embla__slide flex min-w-0 flex-[0_0_100%] flex-col pl-0 md:flex-row">
                 <div class="flex w-full flex-col items-center justify-center px-8 md:w-1/3 md:border-r md:border-gray-200 md:px-0">
-                  {processedServiceImages[index] && (
-                    <Image src={processedServiceImages[index]} alt={customer.name} width={120} height={120} class="mx-auto rounded-full" />
-                  )}
+                  {processedServiceImages[index] ? (
+                    <Image src={processedServiceImages[index] || null} alt={customer.name || ''} width={120} height={120} class="mx-auto rounded-full" />
+                  ) : null}
                   <h3 class="mt-6 mb-2 text-xl md:text-2xl">{customer.name}</h3>
                   <h4 class="text-md font-light tracking-widest text-gray-500">{customer.job}</h4>
                   <div class="arrow-sub" />
