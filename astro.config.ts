@@ -9,11 +9,7 @@ export default defineConfig({
   site: 'https://astina.vercel.app',
   integrations: [mdx(), sitemap(), pagefind()],
   vite: {
-    plugins: [tailwindcss()],
-    // 添加字体优化配置
-    optimizeDeps: {
-      exclude: ['@fontsource/inter'] // 如果你使用的是 Inter 字体
-    }
+    plugins: [tailwindcss()]
   },
   image: {
     experimentalLayout: 'responsive'
