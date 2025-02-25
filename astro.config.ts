@@ -6,7 +6,7 @@ import pagefind from 'astro-pagefind'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://geek-startup.vercel.app',
+  site: 'https://astina.vercel.app',
   integrations: [mdx(), sitemap(), pagefind()],
   vite: {
     plugins: [tailwindcss()]
