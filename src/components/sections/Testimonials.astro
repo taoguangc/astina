@@ -18,65 +18,65 @@ const { title = '', image = '', customers = [] } = Astro.props
 
 // 统一处理所有图片
 const processImages = async (images: (string | undefined)[]) => {
-  return Promise.all(images.map(img => (img ? getImage(img) : null)))
+  return Promise.all(images.map((img) => (img ? getImage(img) : null)))
 }
 
-const [processedImage, ...processedServiceImages] = await processImages([image, ...customers.map(customer => customer.avatar)])
+const [processedImage, ...processedServiceImages] = await processImages([image, ...customers.map((customer) => customer.avatar)])
 ---
 
-<section class='bg-white mx-auto py-20 relative'>
-  <div class='container relative'>
-    <h2 class='text-4xl font-bold mb-12'>{title}</h2>
-    <div class='embla relative pb-12'>
-      <div class='embla__viewport overflow-hidden'>
-        <div class='embla__container flex'>
+<section class="relative mx-auto bg-white py-20">
+  <div class="relative container">
+    <h2 class="mb-12 text-4xl font-bold">{title}</h2>
+    <div class="embla relative pb-12">
+      <div class="embla__viewport overflow-hidden">
+        <div class="embla__container flex">
           {
             customers.map((customer, index) => (
-              <div class='embla__slide flex-[0_0_100%] min-w-0 flex flex-col md:flex-row pl-0'>
-                <div class='w-full md:w-1/3 flex flex-col justify-center items-center px-8 md:px-0 md:border-r md:border-gray-200'>
+              <div class="embla__slide flex min-w-0 flex-[0_0_100%] flex-col pl-0 md:flex-row">
+                <div class="flex w-full flex-col items-center justify-center px-8 md:w-1/3 md:border-r md:border-gray-200 md:px-0">
                   {processedServiceImages[index] && (
-                    <Image src={processedServiceImages[index]} alt={customer.name} width={120} height={120} class='mx-auto rounded-full' />
+                    <Image src={processedServiceImages[index]} alt={customer.name} width={120} height={120} class="mx-auto rounded-full" />
                   )}
-                  <h3 class='text-xl md:text-2xl mt-6 mb-2'>{customer.name}</h3>
-                  <h4 class='text-md font-light text-gray-500 tracking-widest'>{customer.job}</h4>
-                  <div class='arrow-sub' />
+                  <h3 class="mt-6 mb-2 text-xl md:text-2xl">{customer.name}</h3>
+                  <h4 class="text-md font-light tracking-widest text-gray-500">{customer.job}</h4>
+                  <div class="arrow-sub" />
                 </div>
-                <div class='w-full md:w-2/3 p-8 md:py-16 md:pl-16 md:pr-0'>
-                  <div class='mb-8 md:mb-16 opacity-10'>
-                    <Image src={quote} alt='quote' width={80} height={80} />
+                <div class="w-full p-8 md:w-2/3 md:py-16 md:pr-0 md:pl-16">
+                  <div class="mb-8 opacity-10 md:mb-16">
+                    <Image src={quote} alt="quote" width={80} height={80} />
                   </div>
-                  <p class='text-2xl md:text-3xl/12 font-light'>{customer.testimonial}</p>
+                  <p class="text-2xl font-light md:text-3xl/12">{customer.testimonial}</p>
                 </div>
               </div>
             ))
           }
         </div>
       </div>
-      <div class='embla__controls mx-auto max-w-xs relative flex justify-between gap-4 mt-4'>
-        <button class='embla__button embla__button--prev shadow-lg rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-50'>
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='currentColor' class='w-6 h-6'>
-            <g clip-path='url(#arrow)'>
+      <div class="embla__controls relative mx-auto mt-4 flex max-w-xs justify-between gap-4">
+        <button class="embla__button embla__button--prev flex h-12 w-12 items-center justify-center rounded-full shadow-lg hover:bg-gray-50">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" class="h-6 w-6">
+            <g clip-path="url(#arrow)">
               <path
-                id='path'
-                d='M4.8 14.2L15 14.2L15 15.7L2.2 15.7L2.2 3L3.7 3L3.7 13.2L14.5 2.5L15.6 3.59L4.8 14.2Z'
-                fill='#171717'
-                fill-opacity='1'
-                fill-rule='evenodd'></path>
+                id="path"
+                d="M4.8 14.2L15 14.2L15 15.7L2.2 15.7L2.2 3L3.7 3L3.7 13.2L14.5 2.5L15.6 3.59L4.8 14.2Z"
+                fill="#171717"
+                fill-opacity="1"
+                fill-rule="evenodd"></path>
             </g>
           </svg>
         </button>
 
-        <div class='embla__dots mx-auto flex flex-wrap justify-center items-center'></div>
+        <div class="embla__dots mx-auto flex flex-wrap items-center justify-center"></div>
 
-        <button class='embla__button embla__button--next shadow-lg rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-50'>
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='currentColor' class='w-6 h-6'>
-            <g clip-path='url(#arrow)'>
+        <button class="embla__button embla__button--next flex h-12 w-12 items-center justify-center rounded-full shadow-lg hover:bg-gray-50">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" class="h-6 w-6">
+            <g clip-path="url(#arrow)">
               <path
-                id='path'
-                d='M13.2 3.8L3 3.8L3 2.3L15.8 2.3L15.8 15L14.3 15L14.3 4.8L3.5 15.5L2.39 14.4L13.2 3.8Z'
-                fill='#171717'
-                fill-opacity='1'
-                fill-rule='evenodd'></path>
+                id="path"
+                d="M13.2 3.8L3 3.8L3 2.3L15.8 2.3L15.8 15L14.3 15L14.3 4.8L3.5 15.5L2.39 14.4L13.2 3.8Z"
+                fill="#171717"
+                fill-opacity="1"
+                fill-rule="evenodd"></path>
             </g>
           </svg>
         </button>
@@ -90,19 +90,28 @@ const [processedImage, ...processedServiceImages] = await processImages([image, 
   import { addPrevNextBtnsClickHandlers } from '../../scripts/EmblaCarouselArrowButtons'
   import { addDotBtnsAndClickHandlers } from '../../scripts/EmblaCarouselDotButton'
 
-  const OPTIONS = {}
+  const initializeEmbla = () => {
+    const emblaNode = document.querySelector('.embla')
+    if (!emblaNode) return
+    const OPTIONS = {}
 
-  const emblaNode = document.querySelector('.embla')
-  const viewportNode = emblaNode.querySelector('.embla__viewport')
-  const prevBtnNode = emblaNode.querySelector('.embla__button--prev')
-  const nextBtnNode = emblaNode.querySelector('.embla__button--next')
-  const dotsNode = emblaNode.querySelector('.embla__dots')
+    const viewportNode = emblaNode.querySelector('.embla__viewport') as HTMLElement
+    const prevBtnNode = emblaNode.querySelector('.embla__button--prev') as HTMLElement
+    const nextBtnNode = emblaNode.querySelector('.embla__button--next') as HTMLElement
+    const dotsNode = emblaNode.querySelector('.embla__dots') as HTMLElement
 
-  const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
+    const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
 
-  const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(emblaApi, prevBtnNode, nextBtnNode)
-  const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(emblaApi, dotsNode)
+    const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(emblaApi, prevBtnNode, nextBtnNode)
+    const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(emblaApi, dotsNode)
 
-  emblaApi.on('destroy', removePrevNextBtnsClickHandlers)
-  emblaApi.on('destroy', removeDotBtnsAndClickHandlers)
+    emblaApi.on('destroy', removePrevNextBtnsClickHandlers)
+    emblaApi.on('destroy', removeDotBtnsAndClickHandlers)
+  }
+
+  document.addEventListener('astro:page-load', initializeEmbla)
+  document.addEventListener('astro:after-swap', () => {
+    document.removeEventListener('astro:page-load', initializeEmbla)
+    initializeEmbla() // Re-initialize after swap
+  })
 </script>
