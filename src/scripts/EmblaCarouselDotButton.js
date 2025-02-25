@@ -18,17 +18,17 @@ export const addDotBtnsAndClickHandlers = (emblaApi, dotsNode) => {
   }
 
   const toggleDotBtnsActive = () => {
+    if (!dotNodes.length) return
+
     const previous = emblaApi.previousScrollSnap()
     const selected = emblaApi.selectedScrollSnap()
-    if (dotNodes[previous]) {
+
+    if (previous >= 0 && previous < dotNodes.length) {
       dotNodes[previous].classList.remove('embla__dot--selected')
-    } else {
-      console.error('Dot button not found for previous index:', previous)
     }
-    if (dotNodes[selected]) {
+
+    if (selected >= 0 && selected < dotNodes.length) {
       dotNodes[selected].classList.add('embla__dot--selected')
-    } else {
-      console.error('Dot button not found for selected index:', selected)
     }
   }
 
