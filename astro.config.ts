@@ -9,7 +9,11 @@ export default defineConfig({
   site: 'https://astina.vercel.app',
   integrations: [mdx(), sitemap(), pagefind()],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    // 添加字体优化配置
+    optimizeDeps: {
+      exclude: ['@fontsource/inter'] // 如果你使用的是 Inter 字体
+    }
   },
   image: {
     experimentalLayout: 'responsive'
@@ -18,6 +22,9 @@ export default defineConfig({
     responsiveImages: true
   },
   build: {
-    format: 'file'
+    format: 'file',
+    // 添加资源处理配置
+    assets: 'assets',
+    assetsPrefix: '/_astro'
   }
 })

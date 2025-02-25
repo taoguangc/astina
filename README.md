@@ -81,6 +81,7 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Deploy to Vercel
 
 Add Environment Variables TINA_CLIENT_ID and TINA_TOKEN
+set site url in astro.config.ts
 Note: Must set Node.js Version to 20.x!
 
 ## Credits
