@@ -34,5 +34,13 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [
+    function ({ addUtilities }: { addUtilities: any }) {
+      addUtilities({
+        '.content-visibility-auto': {
+          'content-visibility': 'auto'
+        }
+      })
+    }
+  ]
 } satisfies Config
