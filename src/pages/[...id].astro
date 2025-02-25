@@ -8,7 +8,7 @@ import * as imageUtils from '../utils/image'
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages')
-  return pages.map(page => {
+  return pages.map((page) => {
     const id = page.id.replace(/\.(md|mdx)$/, '')
     return {
       params: { id },
@@ -26,23 +26,23 @@ const resolvedMainImage = mainImage ? await imageUtils.getImage(mainImage) : nul
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={false}>
-  <article class='mb-16 sm:mb-24'>
-    <header class='mb-8'>
-      <h1 class='text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight'>{title}</h1>
+  <article class="mb-16 sm:mb-24">
+    <header class="mb-8">
+      <h1 class="font-serif text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>
     </header>
 
     {/* 显示主图 */}
     {
       resolvedMainImage && (
-        <div class='container mx-auto mb-8'>
-          <Image src={resolvedMainImage} alt={title} width={1200} height={600} class='rounded-lg shadow-lg w-full' quality={80} format='webp' />
+        <div class="container mx-auto mb-8">
+          <Image src={resolvedMainImage} alt={title} width={1200} height={600} class="w-full rounded-lg shadow-lg" quality={80} format="webp" />
         </div>
       )
     }
 
     {/* 渲染 sections */}
     {
-      sections?.map(section => {
+      sections?.map((section) => {
         return section._template === 'hero' ? (
           <Hero headline={section.headline} subHeadline={section.subHeadline} text={section.text} />
         ) : section._template === 'feature' ? (
@@ -51,7 +51,7 @@ const resolvedMainImage = mainImage ? await imageUtils.getImage(mainImage) : nul
       })
     }
 
-    <div class='max-w-none prose prose-dante sm:prose-lg'>
+    <div class="prose prose-dante sm:prose-lg max-w-none">
       <Content />
     </div>
   </article>
