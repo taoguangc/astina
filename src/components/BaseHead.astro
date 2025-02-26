@@ -78,9 +78,3 @@ function formatCanonicalURL(url: string | URL) {
 <meta property="twitter:description" content={description} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
-
-<!-- 添加到BaseHead.astro中，禁用前端路由进行测试 -->
-<script>
-  // 临时禁用Astro的视图转换功能，看是否解决问题
-  window.sessionStorage.setItem('astro-transitions', 'false')
-</script>

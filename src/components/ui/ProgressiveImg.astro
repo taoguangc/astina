@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  src: ImageMetadata
+  alt: string
+  width: number | string
+  height: number | string
+  class?: string
+}
+
+const { src, alt, width, height, class: className = '' } = Astro.props
+---
+
+<div class="progressive-img">
+  <div class="blur-load" style={`background-image: url(${src.src})`}>
+    <Image src={src} alt={alt} width={width} height={height} class={`transition-opacity duration-500 ${className}`} loading="eager" decoding="sync" />
+  </div>
+</div>
+
+<style>
+  .progressive-img {
+    background-color: #f6f6f6;
+    overflow: hidden;
+  }
+
+  .blur-load {
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    transform: scale(1.1);
+  }
+
+  .blur-load img {
+    opacity: 0;
+  }
+
+  .blur-load.loaded {
+    filter: blur(0);
+    transform: scale(1);
+    transition:
+      filter 0.5s ease-in-out,
+      transform 0.5s ease-in-out;
+  }
+
+  .blur-load.loaded img {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function loaded() {
+    document.querySelectorAll('.progressive-img .blur-load').forEach((div) => {
+      const img = div.querySelector('img')
+
+      function loadImage() {
+        div.classList.add('loaded')
+      }
+
+      if (img?.complete) {
+        loadImage()
+      } else {
+        img?.addEventListener('load', loadImage)
+      }
+    })
+  }
+
+  // 初始加载
+  loaded()
+
+  // View Transitions 支持
+  document.addEventListener('astro:page-load', loaded)
+</script>
