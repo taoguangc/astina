@@ -12,7 +12,7 @@ import { sortItemsByDateDesc } from '../../utils/data-utils'
 // 生成博客文章列表的静态路径
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   // 获取所有文章并按日期降序排序
-  const posts = (await getCollection('posts')).sort(sortItemsByDateDesc).map(post => ({
+  const posts = (await getCollection('posts')).sort(sortItemsByDateDesc).map((post) => ({
     ...post,
     slug: post.slug.replace(/\.(md|mdx)$/, '') // 移除文章URL中的文件扩展名
   }))
@@ -29,20 +29,15 @@ const blog = page.data
 ---
 
 <BaseLayout
-  title='Blog'
-  description='Embark on a journey of personal insights and experiences through my blog'
+  title="Blog"
+  description="Embark on a journey of personal insights and experiences through my blog"
   image={{ src: '/src/images/dante-preview.jpg', alt: 'The preview of the site' }}
   showHeader={false}
 >
-  <!-- 博客归档标题 -->
-  <h1 class='mb-12 text-2xl leading-tight font-serif italic sm:mb-16 sm:text-4xl'>Blog Archive</h1>
-
-  <!-- 遍历并显示所有博客文章预览 -->
-  {blog.map(post => <PostPreview post={post} class='mb-10 sm:mb-12' />)}
-
-  <!-- 分页导航组件 -->
-  <Pagination page={page} class='my-16 sm:my-24' />
-
-  <!-- 订阅组件 -->
-  <Subscribe class='my-16 sm:my-24' />
+  <section class="container mx-auto">
+    <h1 class="mb-12 font-serif text-2xl leading-tight italic sm:mb-16 sm:text-4xl">Blog Archive</h1>
+    {blog.map((post) => <PostPreview post={post} class="mb-10 sm:mb-12" />)}
+    <Pagination page={page} class="my-16 sm:my-24" />
+    <Subscribe class="my-16 sm:my-24" />
+  </section>
 </BaseLayout>
