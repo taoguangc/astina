@@ -20,7 +20,8 @@ const Theme: Collection = {
         {
           type: 'string',
           name: 'sans',
-          label: 'Sans'
+          label: 'Sans',
+          list: true
         },
         {
           type: 'string',
