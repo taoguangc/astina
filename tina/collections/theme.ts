@@ -26,7 +26,8 @@ const Theme: Collection = {
         {
           type: 'string',
           name: 'serif',
-          label: 'Serif'
+          label: 'Serif',
+          list: true
         }
       ]
     },
