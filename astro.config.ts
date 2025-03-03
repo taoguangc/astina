@@ -7,7 +7,6 @@ import pagefind from 'astro-pagefind'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astina.vercel.app',
-  // trailingSlash: 'always',
   output: 'static',
   integrations: [mdx(), sitemap(), pagefind()],
   vite: {

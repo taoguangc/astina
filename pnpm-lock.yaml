@@ -52,14 +52,14 @@ importers:
         specifier: ^22.13.8
         version: 22.13.8
       prettier:
-        specifier: ^3.5.2
-        version: 3.5.2
+        specifier: ^3.5.3
+        version: 3.5.3
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
-        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.2)
+        version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
 
 packages:
 
@@ -2469,9 +2469,9 @@ packages:
     resolution: {integrity: sha512-0LRYNcKW2t/bWJmiKYhPIUVwz4iMNpC3aPh3UdvfUS8B+68kHpdht7pPcuawb08057rXuyuxZXavcVpoVL01AA==}
     engines: {node: '>=12'}
 
-  '@whatwg-node/promise-helpers@1.2.1':
-    resolution: {integrity: sha512-+faGtJlS4U8NSaSzRVN37xAprPdhoobYzUSUo4DgH8APtfFyizmNxp0ckwKcURoL8cy2B+bKxOWU/VIH2nFeLg==}
-    engines: {node: '>=18.0.0'}
+  '@whatwg-node/promise-helpers@1.2.2':
+    resolution: {integrity: sha512-aPVTGCs/QEYkSTnYcLKE1wyYZykbGjaXsEwXHc0FKbSlojIpdw72BQMJx9aJXzkCs6qy9WfDV0jhV9C2qIYYOA==}
+    engines: {node: '>=16.0.0'}
 
   '@xobotyi/scrollbar-width@1.9.5':
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
@@ -5056,8 +5056,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.5.2:
-    resolution: {integrity: sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==}
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7130,7 +7130,7 @@ snapshots:
   '@graphql-tools/utils@10.8.3(graphql@15.8.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@15.8.0)
-      '@whatwg-node/promise-helpers': 1.2.1
+      '@whatwg-node/promise-helpers': 1.2.2
       cross-inspect: 1.0.1
       dset: 3.1.4
       graphql: 15.8.0
@@ -9099,7 +9099,7 @@ snapshots:
       readable-stream: 4.7.0
       varint: 5.0.2
 
-  '@whatwg-node/promise-helpers@1.2.1':
+  '@whatwg-node/promise-helpers@1.2.2':
     dependencies:
       tslib: 2.6.3
 
@@ -12395,18 +12395,18 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.10.4
-      prettier: 3.5.2
+      prettier: 3.5.3
       sass-formatter: 0.7.9
 
-  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.2):
+  prettier-plugin-tailwindcss@0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.3):
     dependencies:
-      prettier: 3.5.2
+      prettier: 3.5.3
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
 
   prettier@2.8.8: {}
 
-  prettier@3.5.2: {}
+  prettier@3.5.3: {}
 
   prism-react-renderer@2.4.1(react@18.3.1):
     dependencies:
