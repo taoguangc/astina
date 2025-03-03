@@ -555,8 +555,8 @@ type GlobalConnection implements Connection {
 }
 
 type ThemeFonts {
-  sans: [String]
-  serif: [String]
+  sans: String
+  serif: String
 }
 
 type ThemeLetterSpacing {
@@ -860,8 +860,8 @@ input GlobalMutation {
 }
 
 input ThemeFontsMutation {
-  sans: [String]
-  serif: [String]
+  sans: String
+  serif: String
 }
 
 input ThemeLetterSpacingMutation {
