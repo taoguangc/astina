@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: themeData.fonts.sans,
-        serif: themeData.fonts.serif
+        sans: themeData.fonts.sans || 'sans-serif',
+        serif: themeData.fonts.serif || 'serif'
       },
       spacing: {
         '6xl': themeData.spacing['6xl']
