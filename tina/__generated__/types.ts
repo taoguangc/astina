@@ -747,8 +747,8 @@ export type GlobalConnection = Connection & {
 
 export type ThemeFonts = {
   __typename?: 'ThemeFonts';
-  sans?: Maybe<Scalars['String']['output']>;
-  serif?: Maybe<Scalars['String']['output']>;
+  sans?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  serif?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 export type ThemeLetterSpacing = {
@@ -1165,8 +1165,8 @@ export type GlobalMutation = {
 };
 
 export type ThemeFontsMutation = {
-  sans?: InputMaybe<Scalars['String']['input']>;
-  serif?: InputMaybe<Scalars['String']['input']>;
+  sans?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  serif?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type ThemeLetterSpacingMutation = {
@@ -1211,7 +1211,7 @@ export type ProjectsPartsFragment = { __typename: 'Projects', title: string, des
 
 export type GlobalPartsFragment = { __typename: 'Global', title: string, subtitle?: string | null, description?: string | null, postsPerPage?: number | null, projectsPerPage?: number | null, image?: { __typename: 'GlobalImage', src?: string | null, alt?: string | null } | null, navLinks?: Array<{ __typename: 'GlobalNavLinks', text?: string | null, href?: string | null } | null> | null, footerNavLinks?: Array<{ __typename: 'GlobalFooterNavLinks', text?: string | null, href?: string | null } | null> | null, socialLinks?: Array<{ __typename: 'GlobalSocialLinks', text?: string | null, href?: string | null } | null> | null, subscribe?: { __typename: 'GlobalSubscribe', title?: string | null, text?: string | null, formUrl?: string | null } | null };
 
-export type ThemePartsFragment = { __typename: 'Theme', fonts?: { __typename: 'ThemeFonts', sans?: string | null, serif?: string | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null };
+export type ThemePartsFragment = { __typename: 'Theme', fonts?: { __typename: 'ThemeFonts', sans?: Array<string | null> | null, serif?: Array<string | null> | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null };
 
 export type HomeQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1313,7 +1313,7 @@ export type ThemeQueryVariables = Exact<{
 }>;
 
 
-export type ThemeQuery = { __typename?: 'Query', theme: { __typename: 'Theme', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, fonts?: { __typename: 'ThemeFonts', sans?: string | null, serif?: string | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null } };
+export type ThemeQuery = { __typename?: 'Query', theme: { __typename: 'Theme', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, fonts?: { __typename: 'ThemeFonts', sans?: Array<string | null> | null, serif?: Array<string | null> | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null } };
 
 export type ThemeConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1325,7 +1325,7 @@ export type ThemeConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ThemeConnectionQuery = { __typename?: 'Query', themeConnection: { __typename?: 'ThemeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ThemeConnectionEdges', cursor: string, node?: { __typename: 'Theme', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, fonts?: { __typename: 'ThemeFonts', sans?: string | null, serif?: string | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null } | null } | null> | null } };
+export type ThemeConnectionQuery = { __typename?: 'Query', themeConnection: { __typename?: 'ThemeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ThemeConnectionEdges', cursor: string, node?: { __typename: 'Theme', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, fonts?: { __typename: 'ThemeFonts', sans?: Array<string | null> | null, serif?: Array<string | null> | null } | null, letterSpacing?: { __typename: 'ThemeLetterSpacing', tight?: string | null } | null, colors?: { __typename: 'ThemeColors', primary?: string | null, secondary?: string | null, background?: string | null, text?: string | null } | null, spacing?: { __typename: 'ThemeSpacing', sm?: string | null, md?: string | null, lg?: string | null, xs?: string | null } | null, typography?: { __typename: 'ThemeTypography', fontFamily?: string | null, fontSize?: string | null, lineHeight?: string | null } | null } | null } | null> | null } };
 
 export const HomePartsFragmentDoc = gql`
     fragment HomeParts on Home {

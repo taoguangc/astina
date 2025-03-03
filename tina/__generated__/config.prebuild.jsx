@@ -408,7 +408,7 @@ var pages_default = Pages;
 var Blog = {
   label: "Blog Posts",
   name: "blog",
-  path: "src/content/blog",
+  path: "src/content/posts",
   format: "md",
   // ui: {
   //     router: ({ document }) => {
@@ -659,12 +659,14 @@ var Theme = {
         {
           type: "string",
           name: "sans",
-          label: "Sans"
+          label: "Sans",
+          list: true
         },
         {
           type: "string",
           name: "serif",
-          label: "Serif"
+          label: "Serif",
+          list: true
         }
       ]
     },
