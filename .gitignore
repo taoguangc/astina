@@ -19,4 +19,5 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-node_modules
+tina/__generated__/
+.tina/__generated__/
