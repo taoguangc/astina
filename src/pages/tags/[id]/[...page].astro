@@ -12,7 +12,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = (await getCollection('posts')).sort(sortItemsByDateDesc)
   const tags = getAllTags(posts)
 
-  return tags.flatMap((tag) => {
+  return tags.flatMap(tag => {
     const filteredPosts = getPostsByTag(posts, tag.id)
     return paginate(filteredPosts, {
       params: { id: tag.id },
@@ -28,7 +28,7 @@ const blog = page.data
 const params = Astro.params
 const allPosts = await getCollection('posts')
 const allTags = getAllTags(allPosts)
-const currentTag = allTags.find((tag) => {
+const currentTag = allTags.find(tag => {
   return tag.id === params.id
 })
 ---
@@ -39,8 +39,8 @@ const currentTag = allTags.find((tag) => {
   image={{ src: '/src/images/dante-preview.jpg', alt: 'The preview of the site' }}
   showHeader={false}
 >
-  <h1 class="mb-12 font-serif text-2xl leading-tight italic sm:mb-16 sm:text-4xl">Posts Tagged "{currentTag?.name}"</h1>
-  {blog.map((post) => <PostPreview post={post} class="mb-10 sm:mb-12" />)}
-  <Pagination page={page} class="my-16 sm:my-24" />
-  <Subscribe class="my-16 sm:my-24" />
+  <h1 class='mb-12 text-2xl leading-tight font-serif italic sm:mb-16 sm:text-4xl'>Posts Tagged "{currentTag?.name}"</h1>
+  {blog.map(post => <PostPreview post={post} class='mb-10 sm:mb-12' />)}
+  <Pagination page={page} class='my-16 sm:my-24' />
+  <Subscribe class='my-16 sm:my-24' />
 </BaseLayout>
