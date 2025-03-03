@@ -1,0 +1,180 @@
+fragment HomeParts on Home {
+  __typename
+  title
+  description
+  sections {
+    __typename
+    ... on HomeSectionsHero {
+      headline
+      subHeadline
+      image
+    }
+    ... on HomeSectionsMarquee {
+      items {
+        __typename
+        title
+      }
+    }
+    ... on HomeSectionsFeature {
+      items {
+        __typename
+        title
+        text
+        fimage
+      }
+    }
+    ... on HomeSectionsServices {
+      title
+      subTitle
+      image
+      items {
+        __typename
+        title
+        description
+        serviceImage
+      }
+    }
+    ... on HomeSectionsCallToAction {
+      headline
+      actionLink {
+        __typename
+        text
+        href
+      }
+    }
+    ... on HomeSectionsTestimonials {
+      title
+      image
+      customers {
+        __typename
+        name
+        job
+        avatar
+        testimonial
+      }
+    }
+    ... on HomeSectionsProjects {
+      title
+    }
+    ... on HomeSectionsPosts {
+      title
+    }
+  }
+}
+
+fragment PagesParts on Pages {
+  __typename
+  title
+  mainImage
+  seo {
+    __typename
+    title
+    description
+    image {
+      __typename
+      src
+      alt
+    }
+  }
+  sections {
+    __typename
+    ... on PagesSectionsHero {
+      headline
+      subHeadline
+      text
+    }
+    ... on PagesSectionsFeature {
+      items {
+        __typename
+        title
+        text
+        fimage
+      }
+    }
+  }
+  body
+}
+
+fragment BlogParts on Blog {
+  __typename
+  title
+  excerpt
+  publishDate
+  body
+}
+
+fragment ProjectsParts on Projects {
+  __typename
+  title
+  description
+  publishDate
+  body
+}
+
+fragment GlobalParts on Global {
+  __typename
+  title
+  subtitle
+  description
+  image {
+    __typename
+    src
+    alt
+  }
+  navLinks {
+    __typename
+    text
+    href
+  }
+  footerNavLinks {
+    __typename
+    text
+    href
+  }
+  socialLinks {
+    __typename
+    text
+    href
+  }
+  subscribe {
+    __typename
+    title
+    text
+    formUrl
+  }
+  postsPerPage
+  projectsPerPage
+}
+
+fragment ThemeParts on Theme {
+  __typename
+  fonts {
+    __typename
+    sans
+    serif
+  }
+  letterSpacing {
+    __typename
+    tight
+  }
+  colors {
+    __typename
+    primary
+    secondary
+    background
+    text
+  }
+  spacing {
+    __typename
+    sm
+    md
+    lg
+    xs
+  }
+  typography {
+    __typename
+    fontFamily
+    fontSize
+    lineHeight
+  }
+}
