@@ -8,8 +8,7 @@ const Theme: Collection = {
   ui: {
     allowedActions: {
       create: false,
-      delete: false,
-      createNestedFolder: false
+      delete: false
     }
   },
   fields: [
