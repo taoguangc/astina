@@ -20,14 +20,12 @@ const Theme: Collection = {
         {
           type: 'string',
           name: 'sans',
-          label: 'Sans',
-          list: true
+          label: 'Sans'
         },
         {
           type: 'string',
           name: 'serif',
-          label: 'Serif',
-          list: true
+          label: 'Serif'
         }
       ]
     },
