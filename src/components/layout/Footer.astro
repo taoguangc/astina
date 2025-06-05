@@ -1,0 +1,85 @@
+---
+import siteConfig from '@data/global/index.json'
+import { Icon } from 'astro-icon/components'
+
+// const socialLinks = siteConfig.socialLinks || []
+// const secondaryNavLinks = siteConfig.secondaryNavLinks || []
+---
+
+<footer class="bg-zinc-900 py-8 text-white md:px-4 md:py-12">
+  <div class="container px-4">
+    <div class="flex flex-col justify-between md:flex-row">
+      <div class="mb-12 md:mb-8 md:max-w-96">
+        <div class="mb-4">
+          <a href="/" class="flex items-center gap-3">
+            <Icon name="logo" size={28} />
+            <span class="text-2xl font-semibold">Enima</span>
+          </a>
+        </div>
+        <p class="leading-7">Your Health, Our Priority. Compassionate Care, Expert Solutions.</p>
+      </div>
+      <div class="mb-6 flex flex-col justify-end gap-8 md:flex-row md:gap-4">
+        <div class="w-48">
+          <h2 class="mb-3 text-base font-semibold">EMAIL ADDRESS</h2>
+          <a href="mailto:enima@mail.com">enima@mail.com</a>
+        </div>
+        <div class="w-40">
+          <h2 class="mb-3 text-base font-semibold">PHONE NUMBER</h2>
+          <p>(+1) 2912324</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 border-y border-gray-600 py-12 md:grid-cols-[1fr_1fr_1fr] md:justify-between md:py-6">
+      <div class="mb-12 flex flex-col gap-4 md:py-4">
+        <h2 class="mb-2 text-base font-semibold">CLINIC HOURS</h2>
+        <p class="text-sm text-gray-300">Weekdays: 09:00 - 18:00</p>
+        <p class="text-sm text-gray-300">Weekend: 09:00 - 15:00</p>
+      </div>
+      <div class="flex justify-center">
+        <hr class="h-full w-px border-0 bg-gray-600" />
+      </div>
+      <div class="flex w-full flex-col gap-12 md:flex-row md:gap-8 md:py-4">
+        <nav aria-label="Sitemap" class="flex-1 md:w-40">
+          <h2 class="mb-5 text-base font-semibold">SITEMAP</h2>
+          <ul class="flex flex-col gap-4">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="services">Service</a></li>
+            <li><a href="blog">Blog</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Company" class="flex-1 md:w-40">
+          <h2 class="mb-5 text-base font-semibold">COMPANY</h2>
+          <ul class="flex flex-col gap-4">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms & Condition</a></li>
+            <li><a href="/404">404</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Social Media" class="flex-1 md:w-40">
+          <h2 class="mb-5 text-base font-semibold">SOCIAL MEDIA</h2>
+          <ul class="flex flex-col gap-4">
+            <li><a href="">Twitter</a></li>
+            <li><a href="">Instagram</a></li>
+            <li><a href="">LinkedIn</a></li>
+            <li><a href="">Facebook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-center pt-8 md:flex-row md:justify-between md:pt-12">
+      <p class="mb-6 text-sm">Copyright © {siteConfig.title} {new Date().getFullYear()}</p>
+      <p class="text-sm">Powered by Emptyarea</p>
+    </div>
+  </div>
+</footer>
+<script>
+  import '@scripts/app.ts'
+  import siteConfig from '@data/global/index.json'
+  {
+    if (siteConfig?.enableSmoothScroll) {
+      import('@scripts/lenis.ts')
+    }
+  }
+</script>

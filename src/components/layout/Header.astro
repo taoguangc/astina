@@ -1,0 +1,139 @@
+---
+import NavLink from './NavLink.astro'
+import siteConfig from '@data/global/index.json'
+import Button from '@components/ui/Button.astro'
+import { Icon } from 'astro-icon/components'
+
+const navLinks = siteConfig.navLinks || []
+---
+
+<header class="fixed top-0 z-80 w-full text-gray-800 antialiased md:mt-3 md:px-4" data-in="fadeDown">
+  <div class="container bg-white p-3 md:rounded-full md:border md:border-gray-300">
+    <div class="flex w-full flex-row items-center justify-between">
+      <a class="text-theme-foreground mr-auto flex flex-row items-center md:mr-0" href="/" aria-label={`返回${siteConfig.title}首页`}>
+        <div class="mx-3 h-8 w-8 text-primary">
+          <Icon name="logo" size="32" />
+        </div>
+        <h3 class="text-xl font-semibold md:text-2xl md:tracking-tighter">{siteConfig.title}</h3>
+      </a>
+
+      <nav class="hidden md:block">
+        {
+          navLinks.length > 0 && (
+            <ul class="flex gap-4 md:flex-row">
+              {navLinks.map((link) => (
+                <li class="relative h-full overflow-hidden">
+                  <NavLink class="group inline-flex h-full w-full items-center md:text-base/10" href={link.href} aria-label={`访问${link.text}页面`}>
+                    <span class="inline-block p-1 transition-all duration-500 group-hover:-translate-x-2 group-hover:-translate-y-full">{link.text}</span>
+                    <span class="absolute top-0 -left-2 translate-y-full p-1 text-primary transition-all duration-500 group-hover:left-0 group-hover:translate-y-0 group-hover:scale-96">
+                      {link.text}
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </nav>
+      <div class="hidden md:block">
+        <Button href="/contact" aria-label="联系我们了解更多信息">Contact</Button>
+      </div>
+      <button
+        id="hamburger-button"
+        class="relative mr-2 flex h-[18px] w-6 cursor-pointer flex-col justify-between md:hidden"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="sr-only">Toggle navigation menu</span>
+        <div class="hamburger-bars">
+          <div class="bar" aria-hidden="true"></div>
+          <div class="bar" aria-hidden="true"></div>
+          <div class="bar" aria-hidden="true"></div>
+        </div>
+      </button>
+    </div>
+  </div>
+  <nav class="max-h-0 overflow-hidden text-gray-900 transition-all duration-300 ease-in-out" id="mobile-menu" aria-label="Mobile navigation">
+    {
+      navLinks.length > 0 && (
+        <ul class="flex flex-col bg-white py-3 md:flex-row" role="menu">
+          {navLinks.map((link) => (
+            <li class="px-6 py-3" role="none">
+              <NavLink
+                class="group relative inline-block overflow-hidden font-normal md:text-base"
+                href={link.href}
+                role="menuitem"
+                aria-label={`访问${link.text}页面`}
+              >
+                <span class="inline-block transition-transform duration-300 group-hover:[transform:translate(-0.25rem,-100%)]">{link.text}</span>
+                <span class="absolute top-0 left-0 [transform:translate(-0.25rem,100%)] text-primary transition-transform duration-300 group-hover:[transform:translate(0,0)]">
+                  {link.text}
+                </span>
+              </NavLink>
+            </li>
+          ))}
+          <li class="px-6 py-3" role="none">
+            <Button href="/contact" role="menuitem" aria-label="联系我们了解更多信息">
+              Contact
+            </Button>
+          </li>
+        </ul>
+      )
+    }
+  </nav>
+</header>
+
+<style>
+  .bar {
+    width: 100%;
+    height: 2px;
+    margin-bottom: 6px;
+    background-color: currentColor;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #hamburger-button.open .hamburger-bars .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    height: 1.5px;
+  }
+
+  #hamburger-button.open .hamburger-bars .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger-button.open .hamburger-bars .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    height: 1.5px;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // 优化的汉堡菜单初始化函数
+    const initHamburgerMenu = (): void => {
+      const hamburgerButton: HTMLElement | null = document.getElementById('hamburger-button')
+      const mobile: HTMLElement | null = document.getElementById('mobile-menu')
+      if (!hamburgerButton || !mobile) return
+
+      const toggleMenu = (): void => {
+        hamburgerButton.classList.toggle('open')
+        const isOpen: boolean = hamburgerButton.classList.contains('open')
+
+        hamburgerButton.setAttribute('aria-expanded', isOpen.toString())
+
+        if (isOpen) {
+          mobile.classList.remove('max-h-0')
+          mobile.classList.add('max-h-svh')
+        } else {
+          mobile.classList.remove('max-h-svh')
+          mobile.classList.add('max-h-0')
+        }
+      }
+
+      hamburgerButton.addEventListener('click', toggleMenu)
+    }
+
+    initHamburgerMenu()
+  })
+</script>

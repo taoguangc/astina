@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets'
+import { getImage } from '@utils/image'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  name?: string
+  email?: string
+  phone?: string
+  date?: string
+  message?: string
+  content?: Array<{
+    title: string
+    icon?: string
+    text?: string
+    link?: string
+  }>
+}
+
+const { title = '', description = '', image = '', name = '', email = '', phone = '', date = '', message = '', content = [] } = Astro.props
+
+const props = Astro.props as Props
+
+// 统一处理所有图片
+const processImages = async (images: (string | undefined)[]) => {
+  return Promise.all(images.map((img) => (img ? getImage(img) : null)))
+}
+
+const processedImage = image ? await getImage(image) : null
+---
+
+<section class="bg-white py-8 md:py-16">
+  <div class="container mx-auto px-4">
+    <!-- Contact Info Section -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <!-- Clinic Contact -->
+      <div>
+        <div class="mb-3 flex items-center gap-2">
+          <div class="h-2 w-2 rounded-full bg-primary"></div>
+          <h3 class="text-sm text-primary">Contact</h3>
+        </div>
+        <hr class="mb-6 w-48 rounded border-2 border-primary" />
+        <h2 class="mb-8 text-3xl font-semibold md:text-4xl" data-in="wordFade">{title}</h2>
+        <h3 class="text-gray-600">{description}</h3>
+      </div>
+    </div>
+
+    <div class="my-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+      {
+        content &&
+          content.map((item) => (
+            <div class="flex flex-col">
+              <h3 class="mb-4 text-xl font-semibold">{item.title}</h3>
+              <div class="flex items-center gap-2">
+                {item.icon && <Fragment set:html={item.icon} />}
+                {item.link ? (
+                  <a href={item.link} class="text-gray-600 hover:text-primary">
+                    {item.text}
+                  </a>
+                ) : (
+                  <span class="text-gray-600">{item.text}</span>
+                )}
+              </div>
+            </div>
+          ))
+      }
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <!-- Left Column - Image -->
+      <div class="overflow-hidden rounded-lg">
+        {
+          processedImage && (
+            <Image
+              src={processedImage}
+              alt="Contact Image"
+              width="1280"
+              height="1280"
+              class="aspect-[5/4] w-full rounded-2xl object-cover content-visibility-auto"
+              fetchpriority="high"
+              decoding="sync"
+            />
+          )
+        }
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="flex flex-col">
+        <form class="[&_input,&_textarea]:bg-gray [&_input,&_textarea]:p-2 flex flex-col gap-6">
+          <!-- Name Field -->
+          <div class="flex flex-col gap-2">
+            <label for="name" class="font-medium">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Jane Smith"
+              class="rounded-md border border-gray-300 p-3 focus:border-primary focus:outline-none"
+            />
+          </div>
+
+          <!-- Email and Phone Fields -->
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="flex flex-col gap-2">
+              <label for="email" class="font-medium">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="jane@framer.com"
+                class="rounded-md border border-gray-300 p-3 focus:border-primary focus:outline-none"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="phone" class="font-medium">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(+1)81237124"
+                class="rounded-md border border-gray-300 p-3 focus:border-primary focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Date Appointment Field -->
+          <div class="flex flex-col gap-2">
+            <label for="date" class="font-medium">Date Appointment</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              placeholder="年/月/日"
+              class="rounded-md border border-gray-300 p-3 focus:border-primary focus:outline-none"
+            />
+          </div>
+
+          <!-- Message Field -->
+          <div class="flex flex-col gap-2">
+            <label for="message" class="font-medium">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Your Message"
+              class="rounded-md border border-gray-300 p-3 focus:border-primary focus:outline-none"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="rounded-full bg-primary px-6 py-3 text-center font-medium text-white transition-all hover:bg-gray-500"> Submit </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import siteConfig from '@data/global/index.json'
+import themeData from '@data/theme/index.json'
+import '@styles/global.css'
+import '@styles/lenis.css'
+
+export type Props = {
+  title?: string
+  description?: string
+  image?: { src: string; alt?: string }
+  pageType?: 'website' | 'article'
+}
+
+const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props
+const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ')
+const resolvedImage = image?.src
+  ? {
+      src: new URL(image.src, Astro.site).toString(),
+      alt: image.alt
+    }
+  : undefined
+const canonicalURL = new URL(Astro.request.url, Astro.site)
+
+/**
+ * Enforce some standard canonical URL formatting across the site.
+ */
+function formatCanonicalURL(url: string | URL) {
+  const path = url.toString()
+  const hasQueryParams = path.includes('?')
+  // If there are query params, make sure the URL has no trailing slash
+  if (hasQueryParams) {
+    path.replace(/\/?$/, '')
+  }
+  // otherwise, canonical URL always has a trailing slash
+  return path.replace(/\/?$/, hasQueryParams ? '' : '/')
+}
+---
+
+<!-- High Priority Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- 优化字体加载 -->
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href={`https://fonts.googleapis.com/css2?family=${themeData.fonts.sans[0].replace(' ', '+')}:wght@400;500;600;700&display=swap`}
+  rel="stylesheet"
+  media="print"
+  onload="this.media='all'"
+/> -->
+
+<!-- 基础元数据 -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+
+<!-- 必要的资源链接 -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="sitemap" href="/sitemap-index.xml" aria-label="Website Sitemap" />
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" aria-label="RSS Feed" />
+
+<!-- Page Metadata -->
+<link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+<meta name="description" content={description} />

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import siteConfigData from '../data/global/index.json'
+import homeData from '../data/home/index.json'
+
+const siteConfig = siteConfigData
+const { sections } = homeData
+
+// 动态导入所有section组件
+const modules = await import.meta.glob('../components/sections/*.astro', { eager: true })
+const SECTION_COMPONENTS = Object.fromEntries(
+  Object.entries(modules).map(([path, module]) => {
+    const componentName = path.match(/[\\/]([^\\/]+)\.astro$/)?.[1] || ''
+    return [componentName, (module as any).default]
+  })
+)
+---
+
+<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+  {
+    sections?.map((section) => {
+      const Component = SECTION_COMPONENTS[section._template]
+      return Component ? <Component {...section} /> : null
+    })
+  }
+</BaseLayout>

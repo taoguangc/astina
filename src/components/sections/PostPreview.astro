@@ -1,0 +1,52 @@
+---
+import { type CollectionEntry } from 'astro:content'
+import FormattedDate from '@components/ui/FormattedDate.astro'
+import Button from '@components/ui/Button.astro'
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> }
+const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = post.data
+---
+
+<article class="mt-4">
+  {
+    featureImage?.src && (
+      <figure class="post-card-thumbnail mb-6 md:mb-0">
+        <a href={`/blog/${post.id}/`}>
+          <img class="w-full rounded-2xl" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+        </a>
+      </figure>
+    )
+  }
+  <div class="pt-6">
+    <div class="mb-2 text-sm tracking-wider text-primary uppercase">
+      {
+        isFeatured && (
+          <>
+            <span class="font-semibold">Featured</span>
+            {' / '}
+          </>
+        )
+      }
+      <FormattedDate date={publishDate} />
+      {
+        updatedDate && (
+          <>
+            {' '}
+            <span>
+              (Updated on <FormattedDate date={updatedDate} />)
+            </span>
+          </>
+        )
+      }
+    </div>
+    <h2 class="text-lg md:font-bold"><a href={`/blog/${post.id}/`}>{title}</a></h2>
+  </div>
+  {
+    excerpt && (
+      <div class="post-card-content mt-2 mb-4">
+        <div class="prose max-w-none prose-slate sm:prose-lg">{excerpt}</div>
+      </div>
+    )
+  }
+  <Button href={`/blog/${post.id}/`} variant={'outline'}>Read Full Post</Button>
+</article>

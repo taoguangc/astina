@@ -1,0 +1,195 @@
+{
+  "title": "Home Page",
+  "description": "Welcome to the home page.",
+  "sections": [
+    {
+      "headline": "Your Trusted Partner in Health and Wellness",
+      "subHeadline": "We provide personalized, high-quality care tailored to your needs. Our compassionate team is dedicated to your overall health and well-being.",
+      "button": [
+        {
+          "text": "Book a Call",
+          "href": "/contact"
+        },
+        {
+          "text": "Learn More",
+          "href": "#features"
+        }
+      ],
+      "image": "/src/assets/hero.jpg",
+      "_template": "Hero"
+    },
+    {
+      "title": "Why Choose Us for Your Healthcare Needs?",
+      "text": "Choosing the right clinic is essential for your well-being. At our medical clinic, we are dedicated to providing exceptional, personalized care. With our experienced staff and advanced technology, we prioritize your health and comfort.",
+      "linkTitle": "More About",
+      "link": "/about",
+      "cards": [
+        {
+          "icon": "/src/images/icons/feature01.svg",
+          "heading": "Expert Medical Team",
+          "content": "Our skilled doctors and specialists bring years of experience health care."
+        },
+        {
+          "icon": "/src/images/icons/feature02.svg",
+          "heading": "Patient-Centered",
+          "content": "Your health and comfort come first, with personalized care plans for each patient."
+        },
+        {
+          "icon": "/src/images/icons/feature03.svg",
+          "heading": "Advanced Diagnostic",
+          "content": "We use the latest medical equipment to ensure accurate diagnoses."
+        },
+        {
+          "icon": "/src/images/icons/feature04.svg",
+          "heading": "Convenient Location",
+          "content": "Easily accessible clinic with flexible hours and booking to fit your busy schedule."
+        }
+      ],
+      "_template": "Features"
+    },
+    {
+      "title": "Healthcare Across Multiple Specialties",
+      "subTitle": "From pediatric care to specialized treatments, our experienced team is dedicated to providing the highest quality care.",
+      "image": "/src/assets/service.avif",
+      "items": [
+        {
+          "title": "Dental Services",
+          "description": "Comprehensive dental care for maintaining oral health and treating dental issues.",
+          "serviceImage": "/src/assets/service01.avif"
+        },
+        {
+          "title": "Dermatology",
+          "description": "Expert skin care treatments for conditions ranging from acne to eczema and more.",
+          "serviceImage": "/src/assets/service02.avif"
+        },
+        {
+          "title": "Physiotherapy",
+          "description": "Personalized therapy programs to help you recover mobility and improve physical function.",
+          "serviceImage": "/src/assets/service03.webp"
+        },
+        {
+          "title": "Children's Health",
+          "description": "Compassionate pediatric care, focusing on the health and well-being of your child.",
+          "serviceImage": "/src/assets/service04.avif"
+        }
+      ],
+      "_template": "Services"
+    },
+    {
+      "title": "Meet Our Doctor",
+      "subTitle": "Our doctor is highly skilled and an expert in their field.",
+      "staff": [
+        {
+          "name": "Emily Claire",
+          "job": "Pediatrician",
+          "image": "/src/assets/doctor01.avif",
+          "link": "https://linkedin/"
+        },
+        {
+          "name": "John Doe",
+          "job": "Pediatrician",
+          "image": "/src/assets/doctor02.avif",
+          "link": "https://linkedin/"
+        },
+        {
+          "name": "Ema Watson",
+          "job": "Dermatologist",
+          "image": "/src/assets/doctor03.avif",
+          "link": "https://linkedin/"
+        },
+        {
+          "name": "Rose J",
+          "job": "General Practitioner",
+          "image": "/src/assets/doctor04.avif",
+          "link": "https://linkedin/"
+        }
+      ],
+      "_template": "Teams"
+    },
+    {
+      "title": "Our Patient Testimonials",
+      "subTitle": "Read their stories to see the real impact of our medical services",
+      "customers": [
+        {
+          "name": "Sarah Mitchell",
+          "job": "Marketing Manager",
+          "avatar": "/src/assets/avatars/a01.avif",
+          "testimonial": "The doctors here are compassionate and thorough. I feel well-cared for every visit!"
+        },
+        {
+          "name": "Adrian David",
+          "job": "Influencer",
+          "avatar": "/src/assets/avatars/a02.avif",
+          "testimonial": "The physicians are caring and attentive. I always feel supported during my visits!"
+        },
+        {
+          "name": "John Alvarez",
+          "job": "Software Engineer",
+          "avatar": "/src/assets/avatars/a03.avif",
+          "testimonial": "Fast, efficient service with a personal touch. I wouldn’t trust my family’s health anywhere else."
+        },
+        {
+          "name": "Emily Roberts",
+          "job": "HR Consultant",
+          "avatar": "/src/assets/avatars/a04.avif",
+          "testimonial": "Their attention to detail and patient-first approach set them apart. Truly outstanding care."
+        },
+        {
+          "name": "James Carter",
+          "job": "Sales Executive",
+          "avatar": "/src/assets/avatars/b01.avif",
+          "testimonial": "I had a great experience with the staff and facilities. Everything was so modern and efficient!"
+        },
+        {
+          "name": "Angela S",
+          "job": "Marketing Manager",
+          "avatar": "/src/assets/avatars/b02.avif",
+          "testimonial": "The doctors here are kind and meticulous. I feel truly cared for each visit!"
+        },
+        {
+          "name": "Yulia F",
+          "job": "Project Manager",
+          "avatar": "/src/assets/avatars/b03.avif",
+          "testimonial": "The staff is friendly and professional. I always feel welcome!"
+        },
+        {
+          "name": "Ilham S",
+          "job": "Student",
+          "avatar": "/src/assets/avatars/b04.avif",
+          "testimonial": "Prompt service paired with genuine compassion. My go-to clinic for all medical needs. Highly Recommended!"
+        },
+        {
+          "name": "Jessica A",
+          "job": "Marketing Manager",
+          "avatar": "/src/assets/avatars/c01.avif",
+          "testimonial": "I appreciate the thorough care and attention to detail during each visit."
+        },
+        {
+          "name": "David L",
+          "job": "Influencer",
+          "avatar": "/src/assets/avatars/c02.avif",
+          "testimonial": "Doctors here truly listen and address all my concerns."
+        },
+        {
+          "name": "Ibnu K",
+          "job": "Student",
+          "avatar": "/src/assets/avatars/c03.avif",
+          "testimonial": "Attentive doctors who truly listen. I feel confident trusting them with my family's care."
+        },
+        {
+          "name": "Bernadeth",
+          "job": "Student",
+          "avatar": "/src/assets/avatars/c04.avif",
+          "testimonial": "Friendly atmosphere and expert care. They make each visit comfortable and reassuring."
+        }
+      ],
+      "_template": "Testimonials"
+    },
+    {
+      "headline": "Take control of your health today—schedule your appointment now and experience personalized, compassionate care!",
+      "buttonText": "Book a Call",
+      "buttonLink": "/contact",
+      "_template": "Booking"
+    }
+  ]
+}
