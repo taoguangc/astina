@@ -33,39 +33,179 @@ const Home: Collection = {
       fields: [
         {
           type: 'string',
-          name: 'type',
-          label: 'Type',
-          options: ['features', 'hero', 'contact']
+          name: '_template',
+          label: 'Template',
+          options: ['Hero', 'Features', 'Services', 'Teams', 'Testimonials', 'Booking']
+        },
+        {
+          type: 'string',
+          name: 'headline',
+          label: 'Headline'
+        },
+        {
+          type: 'string',
+          name: 'subHeadline',
+          label: 'Sub Headline'
         },
         {
           type: 'object',
-          name: 'features',
-          label: 'Features',
+          name: 'button',
+          label: 'Button',
+          list: true,
           fields: [
             {
-              type: 'object',
-              name: 'cards',
-              label: 'Cards',
-              list: true,
-              fields: [
-                {
-                  type: 'string',
-                  name: 'title',
-                  label: 'Title'
-                },
-                {
-                  type: 'string',
-                  name: 'description',
-                  label: 'Description'
-                },
-                {
-                  type: 'image',
-                  name: 'image',
-                  label: 'Image'
-                }
-              ]
+              type: 'string',
+              name: 'text',
+              label: 'Text'
+            },
+            {
+              type: 'string',
+              name: 'href',
+              label: 'Href'
             }
           ]
+        },
+        {
+          type: 'string',
+          name: 'image',
+          label: 'Image'
+        },
+        {
+          type: 'string',
+          name: 'title',
+          label: 'Title'
+        },
+        {
+          type: 'string',
+          name: 'text',
+          label: 'Text'
+        },
+        {
+          type: 'string',
+          name: 'linkTitle',
+          label: 'Link Title'
+        },
+        {
+          type: 'string',
+          name: 'link',
+          label: 'Link'
+        },
+        {
+          type: 'object',
+          name: 'cards',
+          label: 'Cards',
+          list: true,
+          fields: [
+            {
+              type: 'string',
+              name: 'icon',
+              label: 'Icon'
+            },
+            {
+              type: 'string',
+              name: 'heading',
+              label: 'Heading'
+            },
+            {
+              type: 'string',
+              name: 'content',
+              label: 'Content'
+            }
+          ]
+        },
+        {
+          type: 'string',
+          name: 'subTitle',
+          label: 'Sub Title'
+        },
+        {
+          type: 'object',
+          name: 'items',
+          label: 'Items',
+          list: true,
+          fields: [
+            {
+              type: 'string',
+              name: 'title',
+              label: 'Title'
+            },
+            {
+              type: 'string',
+              name: 'description',
+              label: 'Description'
+            },
+            {
+              type: 'string',
+              name: 'serviceImage',
+              label: 'Service Image'
+            }
+          ]
+        },
+        {
+          type: 'object',
+          name: 'staff',
+          label: 'Staff',
+          list: true,
+          fields: [
+            {
+              type: 'string',
+              name: 'name',
+              label: 'Name'
+            },
+            {
+              type: 'string',
+              name: 'job',
+              label: 'Job'
+            },
+            {
+              type: 'string',
+              name: 'image',
+              label: 'Image'
+            },
+            {
+              type: 'string',
+              name: 'link',
+              label: 'Link'
+            }
+          ]
+        },
+        {
+          type: 'object',
+          name: 'customers',
+          label: 'Customers',
+          list: true,
+          fields: [
+            {
+              type: 'string',
+              name: 'name',
+              label: 'Name'
+            },
+            {
+              type: 'string',
+              name: 'job',
+              label: 'Job'
+            },
+            {
+              type: 'string',
+              name: 'avatar',
+              label: 'Avatar'
+            },
+            {
+              type: 'string',
+              name: 'testimonial',
+              label: 'Testimonial'
+            }
+          ]
+        },
+        {
+          type: 'string',
+          name: 'buttonText',
+          label: 'Button Text'
+        },
+        {
+          type: 'string',
+          name: 'buttonLink',
+          label: 'Button Link'
         }
       ]
     }
