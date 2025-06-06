@@ -24,5 +24,17 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()]
+  },
+  content: {
+    collections: [
+      {
+        name: 'home',
+        pattern: 'src/data/home/**/*.{json,md,mdx}'
+      },
+      {
+        name: 'posts',
+        pattern: 'src/content/posts/**/*.{json,md,mdx}'
+      }
+    ]
   }
 })

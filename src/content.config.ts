@@ -14,7 +14,7 @@ const seoSchema = z.object({
 })
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  type: 'content',
   schema: z.object({
     title: z.string(),
     excerpt: z.string().optional(),
@@ -33,7 +33,7 @@ const blog = defineCollection({
 })
 
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+  type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -44,7 +44,7 @@ const projects = defineCollection({
 })
 
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
+  type: 'content',
   schema: z.object({
     title: z.string(),
     featureImage: z
@@ -55,9 +55,17 @@ const pages = defineCollection({
       })
       .optional(),
     seo: seoSchema.optional(),
-    // 添加sections字段定义，允许任意结构
     sections: z.array(z.any()).optional()
   })
 })
 
-export const collections = { blog, projects, pages }
+const home = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    sections: z.array(z.any()).optional()
+  })
+})
+
+export const collections = { blog, projects, pages, home }

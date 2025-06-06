@@ -49,7 +49,7 @@ const Contact: Template = {
     },
     {
       type: 'object',
-      label: 'content',
+      label: 'Content',
       name: 'content',
       list: true,
       ui: {
@@ -68,6 +68,28 @@ const Contact: Template = {
           type: 'rich-text',
           label: 'Text',
           name: 'text'
+        },
+        {
+          type: 'object',
+          label: 'Contact Info',
+          name: 'contactInfo',
+          fields: [
+            {
+              type: 'string',
+              label: 'Address',
+              name: 'address'
+            },
+            {
+              type: 'string',
+              label: 'Phone',
+              name: 'phone'
+            },
+            {
+              type: 'string',
+              label: 'Email',
+              name: 'email'
+            }
+          ]
         }
       ]
     }

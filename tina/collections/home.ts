@@ -1,14 +1,4 @@
 import type { Collection } from 'tinacms'
-import Hero from '../sections/hero'
-import Marquee from '../sections/marquee'
-import Features from '../sections/features'
-import Services from '../sections/services'
-import Teams from '../sections/teams'
-import CallToAction from '../sections/calltoaction'
-import Testimonials from '../sections/testimonials'
-import Booking from '../sections/booking'
-import Projects from '../sections/projects'
-import Posts from '../sections/posts'
 
 const Home: Collection = {
   label: 'Home',
@@ -35,16 +25,49 @@ const Home: Collection = {
       name: 'description',
       label: 'Description'
     },
-
     {
       type: 'object',
-      list: true,
       name: 'sections',
-      label: 'Page Sections',
-      ui: {
-        visualSelector: true
-      },
-      templates: [Hero, Marquee, Features, Services, Teams, CallToAction, Testimonials, Booking, Projects, Posts]
+      label: 'Sections',
+      list: true,
+      fields: [
+        {
+          type: 'string',
+          name: 'type',
+          label: 'Type',
+          options: ['features', 'hero', 'contact']
+        },
+        {
+          type: 'object',
+          name: 'features',
+          label: 'Features',
+          fields: [
+            {
+              type: 'object',
+              name: 'cards',
+              label: 'Cards',
+              list: true,
+              fields: [
+                {
+                  type: 'string',
+                  name: 'title',
+                  label: 'Title'
+                },
+                {
+                  type: 'string',
+                  name: 'description',
+                  label: 'Description'
+                },
+                {
+                  type: 'image',
+                  name: 'image',
+                  label: 'Image'
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

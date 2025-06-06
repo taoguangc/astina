@@ -5,11 +5,7 @@ const Blog: Collection = {
   name: 'blog',
   path: 'src/content/blog',
   format: 'md',
-  // ui: {
-  //     router: ({ document }) => {
-  //         return `/blog/${document._sys.breadcrumbs.join('/')}`;
-  //     }
-  // },
+
   fields: [
     {
       type: 'string',
