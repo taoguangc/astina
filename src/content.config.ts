@@ -101,7 +101,12 @@ const home = defineCollection({
         testimonial: z.string()
       })).optional(),
       buttonText: z.string().optional(),
-      buttonLink: z.string().optional()
+      buttonLink: z.string().optional(),
+      features: z.array(z.object({
+        icon: z.string(),
+        title: z.string(),
+        description: z.string()
+      })).optional()
     }))
   })
 })
