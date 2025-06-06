@@ -64,7 +64,45 @@ const home = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    sections: z.array(z.any()).optional()
+    sections: z.array(z.object({
+      _template: z.string(),
+      headline: z.string().optional(),
+      subHeadline: z.string().optional(),
+      button: z.array(z.object({
+        text: z.string(),
+        href: z.string()
+      })).optional(),
+      image: z.string().optional(),
+      title: z.string().optional(),
+      text: z.string().optional(),
+      linkTitle: z.string().optional(),
+      link: z.string().optional(),
+      cards: z.array(z.object({
+        icon: z.string(),
+        heading: z.string(),
+        content: z.string()
+      })).optional(),
+      subTitle: z.string().optional(),
+      items: z.array(z.object({
+        title: z.string(),
+        description: z.string(),
+        serviceImage: z.string()
+      })).optional(),
+      staff: z.array(z.object({
+        name: z.string(),
+        job: z.string(),
+        image: z.string(),
+        link: z.string()
+      })).optional(),
+      customers: z.array(z.object({
+        name: z.string(),
+        job: z.string(),
+        avatar: z.string(),
+        testimonial: z.string()
+      })).optional(),
+      buttonText: z.string().optional(),
+      buttonLink: z.string().optional()
+    }))
   })
 })
 
