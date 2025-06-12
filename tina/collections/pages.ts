@@ -5,7 +5,6 @@ import FAQs from '../sections/faqs'
 import Features2 from '../sections/features2'
 import Lab from '../sections/lab'
 import Booking from '../sections/booking'
-import Contact from '../sections/contact'
 
 const Pages: Collection = {
   label: 'Pages',
@@ -69,7 +68,7 @@ const Pages: Collection = {
       ui: {
         visualSelector: true
       },
-      templates: [Story, Doctor, FAQs, Features2, Lab, Booking, Contact]
+      templates: [Story, Doctor, FAQs, Features2, Lab, Booking]
     },
     {
       type: 'rich-text' as const,
