@@ -78,7 +78,10 @@ const Home: Collection = {
         {
           type: 'string',
           name: 'text',
-          label: 'Text'
+          label: 'Text',
+          ui: {
+            component: 'textarea'
+          }
         },
         {
           type: 'string',
@@ -109,7 +112,10 @@ const Home: Collection = {
             {
               type: 'string',
               name: 'content',
-              label: 'Content'
+              label: 'Content',
+              ui: {
+                component: 'textarea'
+              }
             }
           ]
         },
@@ -193,7 +199,10 @@ const Home: Collection = {
             {
               type: 'string',
               name: 'testimonial',
-              label: 'Testimonial'
+              label: 'Testimonial',
+              ui: {
+                component: 'textarea'
+              }
             }
           ]
         },
