@@ -24,6 +24,24 @@ const Home: Collection = {
       type: 'string',
       name: 'description',
       label: 'Description'
+    },
+    {
+      type: 'object',
+      name: 'homeButtons',
+      label: 'Home Buttons',
+      list: true,
+      fields: [
+        {
+          type: 'string',
+          name: 'text',
+          label: 'Button Text'
+        },
+        {
+          type: 'string',
+          name: 'href',
+          label: 'Button Link'
+        }
+      ]
     }
   ]
 }
