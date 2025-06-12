@@ -30,16 +30,23 @@ const Home: Collection = {
       name: 'homeButtons',
       label: 'Home Buttons',
       list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.text || 'Button' }
+        }
+      },
       fields: [
         {
           type: 'string',
           name: 'text',
-          label: 'Button Text'
+          label: 'Button Text',
+          required: true
         },
         {
           type: 'string',
           name: 'href',
-          label: 'Button Link'
+          label: 'Button Link',
+          required: true
         }
       ]
     }
